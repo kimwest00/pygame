@@ -18,7 +18,7 @@ character_height = character_size[1]#캐릭터 가로크기
 #캐릭터는 기본위치
 character_x_pos = (screen_width / 2) - (character_width/2) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
 character_y_pos = screen_height - character_height  #화면 하단부에 위치하도록(세로)
-
+#git 정신차리자
 
 running = True #게임 진행중?
 while running:
