@@ -20,7 +20,9 @@ character_height = character_size[1]#캐릭터 가로크기
 #캐릭터는 기본위치
 character_x_pos = (screen_width / 2) - (character_width/2) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
 character_y_pos = screen_height - character_height  #화면 하단부에 위치하도록(세로)
-#git 정신차리자
+#이동할 좌표
+to_x = 0
+to_y = 0
 
 running = True #게임 진행중?
 while running:
@@ -29,13 +31,21 @@ while running:
             running = False #그때 창을 종료하자
         if event.type == pygame.KEYDOWN:#키가 눌러졌냐?
             if event.key == pygame.K_LEFT:#캐릭터 왼쪽으로
-                pass
+                to_x -= 5 
             elif event.key ==pygame.K_RIGHT:#캐릭터 오른쪽으로
-                pass
+                to_x +=5
             elif event.key == pygame.K_UP:#캐릭터 위쪽으로
-                pass
+                to_y -= 5
             elif event.key == pygame.K_DOWN:#캐릭터 아래쪽으로
-                pass
+                to_y += 5
+        #방향키를 땠을때(누르지않을때는 멈추도록(=이동변수가 없도록))
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                to_x=0
+            elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                to_y=0
+    character_x_pos += to_x
+    character_y_pos += to_y
     screen.blit(background,(0,0))#배경그리기_(0,0)은 background 나타나는 위치  
     screen.blit(character,(character_x_pos, character_y_pos))#캐릭터 그리기
     pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨   
