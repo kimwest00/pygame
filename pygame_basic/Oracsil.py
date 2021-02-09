@@ -46,6 +46,18 @@ while running:
                 to_y=0
     character_x_pos += to_x
     character_y_pos += to_y
+    #가로경계값(캐릭터가 화면밖에 나가지 못하도록)
+    if character_x_pos <0:
+        character_x_pos =0
+    elif character_x_pos > screen_width - character_width:
+        character_x_pos =screen_width - character_width
+    #세로경계값
+
+    if character_y_pos <0:
+        character_y_pos =0
+    elif character_y_pos>screen_height-character_height:
+        character_y_pos = screen_height
+        
     screen.blit(background,(0,0))#배경그리기_(0,0)은 background 나타나는 위치  
     screen.blit(character,(character_x_pos, character_y_pos))#캐릭터 그리기
     pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨   
