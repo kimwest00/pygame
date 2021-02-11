@@ -86,7 +86,15 @@ while running:
     character_rect =character.get_rect()
     character_rect.left = character_x_pos
     character_rect.top = character_y_pos
-    
+
+    enemy_rect =enemy.get_rect()
+    enemy_rect.left = enemy_x_pos#enemy가 고정은 되어있지만rect에 저장해준적이없어서
+    enemy_rect.top = enemy_y_pos#해당 코드를 적어준다
+
+    #충돌체크
+    if(character_rect.colliderect(enemy_rect)):
+        print("꽝")
+        running = False
     screen.blit(background,(0,0))#배경그리기_(0,0)은 background 나타나는 위치  
     screen.blit(character,(character_x_pos, character_y_pos))#캐릭터 그리기
     screen.blit(enemy,(enemy_x_pos,enemy_y_pos))#적 그리기
