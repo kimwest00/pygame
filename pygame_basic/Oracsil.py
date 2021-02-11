@@ -113,7 +113,13 @@ while running:
     timer = game_font.render(str(int(total_time-elapsed_time)), True, (255,255,255))
     #render 함수: 출력해준다
     screen.blit(timer,(10,10))
+    #0초아래면 게임이 종료되도록
+    if total_time -elapsed_time <=0:
+        print("타임아웃")
+        running = False
+
     pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨  
 
+pygame.time.delay(2000)#2초 후에 게임종료(너무 빨리 종료되니까)
 #pygame 종료
 pygame.quit()
