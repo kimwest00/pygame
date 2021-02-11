@@ -8,6 +8,7 @@ screen = pygame.display.set_mode((screen_width,screen_height))
 
 #화면 타이틀 설정
 pygame.display.set_caption("민서 최애게임")#게임이름 설정
+#FPS(화면속도 설정_Frame Per Seconds)
 #배경 이미지 불러오기
 background = pygame.image.load("C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//게임//Pygame//gunchim_background.png")
 #캐릭터(스프라이트) 불러오기
@@ -57,7 +58,7 @@ while running:
         character_y_pos =0
     elif character_y_pos>screen_height-character_height:
         character_y_pos = screen_height
-        
+
     screen.blit(background,(0,0))#배경그리기_(0,0)은 background 나타나는 위치  
     screen.blit(character,(character_x_pos, character_y_pos))#캐릭터 그리기
     pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨   
