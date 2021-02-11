@@ -41,6 +41,14 @@ enemy_height = enemy_size[1]#캐릭터 가로크기
 enemy_x_pos = (screen_width / 2) - (enemy_width/2) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
 enemy_y_pos = (screen_height/2) - (enemy_height/2)  #화면 하단부에 위치하도록(세로)
 
+#텍스트_ 폰트
+game_font = pygame.font.Font(None,40)#None이라고 쓰면 default폰트로 쓰임
+
+#텍스트_게임제한시간을 표시해보자#
+
+total_time = 10 #제한시간
+start_ticks = pygame.time.get_ticks()#시작 시간 정보(tick)을 받아옴
+
 
 running = True #게임 진행중?
 while running:
@@ -98,6 +106,14 @@ while running:
     screen.blit(background,(0,0))#배경그리기_(0,0)은 background 나타나는 위치  
     screen.blit(character,(character_x_pos, character_y_pos))#캐릭터 그리기
     screen.blit(enemy,(enemy_x_pos,enemy_y_pos))#적 그리기
-    pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨   
+
+    #타이머를 출력해보자
+    #경과시간을 어떻게 계산할까?
+    elapsed_time = (pygame.time.get_ticks()-start_ticks) / 1000#경과시간
+    timer = game_font.render(str(int(total_time-elapsed_time)), True, (255,255,255))
+    #render 함수: 출력해준다
+    screen.blit(timer,(10,10))
+    pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨  
+
 #pygame 종료
 pygame.quit()
