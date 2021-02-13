@@ -92,21 +92,13 @@ while running:
     character_x_pos += to_x * dt
     character_y_pos += to_y * dt
     enemy_y_pos += dt * enemy_speed
-    #3.이벤트 처리(키보드, 마우스에 따른)
-    '''pygame.event.get()#발생한 이벤트
-        pygame.QUIT , KEYDOWN ,K_LEFT'''
-    #4. 게임 캐릭터 위치 정의
-    #5. 충돌 처리 rect.colliderect()
+    if enemy_y_pos >= screen_height - enemy_height:
+        enemy_x_pos = random.randint(0, screen_width) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
+        enemy_y_pos = enemy_height #화면 하단부에 위치하도록(세로)
     screen.blit(background, (0,0))
     screen.blit(character,(character_x_pos,character_y_pos))
-    if enemy_y_pos!=screen_height - enemy_height:
-        screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
-    elif enemy_y_pos >= screen_height - enemy_height:
-        print("야")
-        enemy_x_pos = random.randint(0, screen_width) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
-        enemy_y_pos = (screen_height/2)- (enemy_height/2) #화면 하단부에 위치하도록(세로)
-        screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
-
+    screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
+    
     pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨  
 
 
