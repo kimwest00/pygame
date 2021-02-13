@@ -32,7 +32,7 @@ enemy_height = enemy_size[1]#캐릭터 가로크기
 
 #캐릭터는 기본위치
 enemy_x_pos = random.randint(0, screen_width) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
-enemy_y_pos = (screen_height/2)- (enemy_height/2) #화면 하단부에 위치하도록(세로)
+enemy_y_pos = enemy_height/2 #화면 하단부에 위치하도록(세로)
 
 #FPS(화면속도 설정_Frame Per Seconds)
 clock = pygame.time.Clock()
@@ -99,8 +99,10 @@ while running:
     #5. 충돌 처리 rect.colliderect()
     screen.blit(background, (0,0))
     screen.blit(character,(character_x_pos,character_y_pos))
-    screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
-    if enemy_y_pos < 0:
+    if enemy_y_pos!=screen_height - enemy_height:
+        screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
+    elif enemy_y_pos >= screen_height - enemy_height:
+        print("야")
         enemy_x_pos = random.randint(0, screen_width) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
         enemy_y_pos = (screen_height/2)- (enemy_height/2) #화면 하단부에 위치하도록(세로)
         screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
