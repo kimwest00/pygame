@@ -1,4 +1,5 @@
 import pygame
+pygame.init()
 
 #화면크기 설정
 screen_width = 480  #가로(너비)
@@ -60,9 +61,34 @@ while running:
                 to_x=0
             elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 to_y=0        
+
+    #가로경계값(캐릭터가 화면밖에 나가지 못하도록)
+    if character_x_pos <0:
+        character_x_pos =screen_width - character_width
+        character_x_pos =screen_width - character_width
+    #세로경계값
+
+    if character_y_pos < 0:
+        character_y_pos = 0
+    elif character_y_pos>screen_height-character_height:
+        character_y_pos = screen_height
+
+    #enemy와 충돌처리
+
+    character_rect =character.get_rect()
+    character_rect.left = character_x_pos
+    character_rect.top = character_y_pos
+
+    enemy_rect = enemy.get_rect()
+    enemy_rect.left = enemy_x_pos#enemy가 고정은 되어있지만rect에 저장해준적이없어서
+    enemy_rect.top = enemy_y_pos#해당 코드를 적어준다
+
+    #충돌체크
+    if(character_rect.colliderect(enemy_rect)):
+        running = False
+
     character_x_pos += to_x * dt
     character_y_pos += to_y * dt
-
     #3.이벤트 처리(키보드, 마우스에 따른)
     '''pygame.event.get()#발생한 이벤트
         pygame.QUIT , KEYDOWN ,K_LEFT'''
@@ -73,5 +99,5 @@ while running:
     screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
     pygame.display.update()#게임화면 다시그리기_이걸로 계속 업데이트됨  
 
-pygame.init()
+
 pygame.quit()
