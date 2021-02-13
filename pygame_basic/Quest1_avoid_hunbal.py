@@ -30,7 +30,7 @@ enemy_height = enemy_size[1]#캐릭터 가로크기
 
 #캐릭터는 기본위치
 enemy_x_pos = (screen_width / 2) - (enemy_width/2) #화면 가로의 절반크기에 해당하는 곳에 위치하도록(가로)
-enemy_y_pos = (screen_height/2) - (enemy_height/2)  #화면 하단부에 위치하도록(세로)
+enemy_y_pos = screen_height- enemy_height/2 #화면 하단부에 위치하도록(세로)
 
 #FPS(화면속도 설정_Frame Per Seconds)
 clock = pygame.time.Clock()
@@ -89,6 +89,7 @@ while running:
 
     character_x_pos += to_x * dt
     character_y_pos += to_y * dt
+    enemy_y_pos += dt * character_speed
     #3.이벤트 처리(키보드, 마우스에 따른)
     '''pygame.event.get()#발생한 이벤트
         pygame.QUIT , KEYDOWN ,K_LEFT'''
