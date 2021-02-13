@@ -1,6 +1,6 @@
 ==============================Pygame 화면 출력방식============================
 
-![blit_method](./blit_method.png)
+![blit_method](./image/blit_method.png)
 
 
 출력이 될때, 왼쪽 아래에서 4사분면 방향으로 출력됨
