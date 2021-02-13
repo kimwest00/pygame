@@ -1,6 +1,7 @@
 ==============================Pygame 화면 출력방식============================
 
-![image-20210213232509170](C:\Users\김민서\AppData\Roaming\Typora\typora-user-images\image-20210213232509170.png)
+![blit_method](./blit_method.png)
+
 
 출력이 될때, 왼쪽 아래에서 4사분면 방향으로 출력됨
 
