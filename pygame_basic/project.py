@@ -13,19 +13,22 @@ character_height = character_size[1]
 character_x_pos = screen_width/2  - character_width/2
 character_y_pos = screen_height-character_height
 pygame.display.set_caption("군침이 폭발해요")
+clock = pygame.time.Clock()
 
 to_x = 0
 
 running = True
 while running:
+    dt = clock.tick(60)#게임화면 초당 프레임수 설정
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT: #창을 닫을때(x표시)
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                to_x -= 15
+                to_x -= dt
             elif event.key == pygame.K_RIGHT:
-                to_x += 15
+                to_x += dt
 
         if event.type == pygame.KEYUP:
             to_x = 0
