@@ -29,7 +29,12 @@ while running:
 
         if event.type == pygame.KEYUP:
             to_x = 0
+        
     character_x_pos += to_x
+    if character_x_pos < 0:
+        character_x_pos = 0
+    elif character_x_pos > screen_width-character_width :
+        character_x_pos = screen_width-character_width
 
     screen.blit(background,(0,0))
     screen.blit(character,(character_x_pos,character_y_pos))
