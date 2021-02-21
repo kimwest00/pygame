@@ -22,9 +22,9 @@ while running:
         if event.type == pygame.QUIT: #창을 닫을때(x표시)
             running = False
         if event.type == pygame.KEYDOWN:
-            if event.type == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT:
                 to_x -= 15
-            elif event.type == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT:
                 to_x += 15
 
         if event.type == pygame.KEYUP:
