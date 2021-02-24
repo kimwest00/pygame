@@ -1,3 +1,4 @@
+import os
 import pygame
 pygame.init()
 
@@ -24,6 +25,7 @@ enemy_y_pos = (screen_height/2) - (enemy_height/2)  #화면 하단부에 위치�
 pygame.display.set_caption("군침이 폭발해요")
 clock = pygame.time.Clock()
 
+current_path = os.path.dirname(__file__)
 to_x = 0
 
 running = True
